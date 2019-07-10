@@ -1,44 +1,25 @@
-import redux, { combineReducers, createStore } from 'redux';
+//permite crear un store de redux
+import {createStore} from 'redux';
 
-const ADD_USER = 'ADD_USER'
-const ADD_TO_CART = 'ADD_TO_CART'
-const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+//la función toma un estado y una acción 
+const reducer = (state, action) => {
 
-export function addToCart(product) {
-  return { type: ADD_TO_CART, payload: { product } }
-}
+    //ahora controla tanto la acción ADD_TO_CART como la acción REMOVE_FROM_CART
+    //devolviendo un nuevo estado
+    if(action.type === "ADD_TO_CART"){
+        return{
+            ...state,
+            cart: state.cart.concat(action.product)
+        }
+    }else if (action.type === "REMOVE_FROM_CART"){
+        return{
+            ...state,
+            cart: state.cart.filter(product => product.id !== action.product.id)
+        }
 
-export function removeFromCart(product) {
-  return { type: REMOVE_FROM_CART, paload: { product } }
-}
+    }
+    return state;
+};
 
-
-function users(state = [], action) {
-  switch(action) {
-    case ADD_USER:
-      const { nombre } = action.payload
-      return [...state.users, nombre ]
-    default: 
-      return state
-  }
-}
-
-function cart(state = [], action) {
-  switch(action) {
-    case ADD_TO_CART:
-      const { product } = action.payload
-      return [...state, product ]
-    case REMOVE_FROM_CART:
-      const { id } = action.payload.product
-      return [...state].filter(product => product.id !== id)
-    default:
-      return state
-  }
-}
-
-const StoreApp = combineReducers({
-  users,
-  cart
-})
-
-export default createStore(StoreApp); 
+//recibe la función reductora 'reducer' y el estado inicial
+export default createStore(reducer, { cart: [] });

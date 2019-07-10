@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
-import ShoppingCart from './components/ShoppingCart'
-import ProductList from './components/ProductList'
-import store from './store'
-import { Provider } from 'react-redux'
-
+import React, { Component } from 'react';
+import { Navbar, Grid, Row, Col } from 'react-bootstrap';
+import ProductList from './components/ProductList';
+import ShoppingCart from './components/ShoppingCart';
+import store from './store';
+import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -16,7 +13,7 @@ class App extends Component {
           <Navbar inverse staticTop>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="/#">Ecommerce</a>
+                <a href="#">Ecommerce</a>
               </Navbar.Brand>
             </Navbar.Header>
           </Navbar>

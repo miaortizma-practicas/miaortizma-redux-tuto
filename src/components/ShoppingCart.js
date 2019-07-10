@@ -1,7 +1,6 @@
-
 import React, { Component } from 'react';
 import { Panel, Table, Button, Glyphicon } from 'react-bootstrap';
-import { removeFromCart } from '../store';
+import {removeFromCart} from '../ActionCreators';
 import { connect } from 'react-redux';
 
 const styles = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 import store from '../store';
-import { addToCart } from '../store';
+import {addToCart} from '../ActionCreators';
 
 const styles = {
   products: {
